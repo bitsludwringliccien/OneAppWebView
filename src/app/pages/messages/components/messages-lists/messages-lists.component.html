@@ -1,0 +1,31 @@
+<ion-list *ngIf="messages?.length > 0; else messagesEmpty">
+  <ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>Fecha y Hora</div>
+        </ion-col>
+        <ion-col>
+          <div>Destino</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list-header>
+  <ion-item *ngFor="let message of messages">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-left">
+          <div>{{ message.eventDateTime }}</div>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          <div>{{ message.targetNumber }}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-list>
+<ng-template #messagesEmpty>
+  <ion-card>
+    <div class="ion-text-center" color="danger"> No Existen registros en el periodo seleccionado</div>
+  </ion-card>
+</ng-template>

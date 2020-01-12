@@ -1,0 +1,7 @@
+<ion-spinner *ngIf="loading" color="primary"></ion-spinner>
+<div *ngIf="!loading">
+    <ion-card>
+        <app-date-piker-start-end [rango]="15" (selectedRange)="filterRange($event)"></app-date-piker-start-end>
+        <app-calls-lists [calls]="calls" [loading]="loadingList"></app-calls-lists>
+    </ion-card>
+</div>

@@ -1,0 +1,40 @@
+<ion-list *ngIf="calls?.length > 0; else callsEmpty">
+  <ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>Fecha y Hora</div>
+        </ion-col>
+        <ion-col>
+          <div>Destino</div>
+        </ion-col>
+        <ion-col>
+          <div>Duración</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list-header>
+  <ion-spinner *ngIf="loading" color="primary"></ion-spinner>
+  <div *ngIf="!loading">
+    <ion-item *ngFor="let call of calls">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-left">
+            <div>{{ call.eventDateTime }}</div>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <div>{{ call.targetNumber }}</div>
+          </ion-col>
+          <ion-col class="ion-text-right">
+            <div>{{ call.eventDuration }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
+</ion-list>
+<ng-template #callsEmpty>
+  <ion-card>
+    <div class="ion-text-center" color="danger"> No Existen registros en el periodo seleccionado</div>
+  </ion-card>
+</ng-template>
